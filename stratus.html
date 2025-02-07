@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratus Airways Entertainment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2d033b;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .seat-screen {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+        }
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+        }
+        .header img {
+            max-height: 80px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0 0 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .carousel img.active {
+            opacity: 1;
+        }
+        .navigation {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+        .nav-item {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="seat-screen">
+        <div class="header">
+            <img src="https://static.wikia.nocookie.net/geofsaviation/images/0/09/Stratus_Airways.png/revision/latest/scale-to-width-down/1000?cb=20241220012551" alt="Stratus Airways Logo">
+            <h1>Stratus Airways Entertainment</h1>
+        </div>
+        <div class="carousel">
+            <img class="carousel-item active" src="https://github.com/Hacker-Sloth/StratusAirwaysIFE/blob/main/Stratus_Poster.png?raw=true" alt="Entertainment Poster 1">
+            <img class="carousel-item" src="https://github.com/Hacker-Sloth/StratusAirwaysIFE/blob/main/Stratus_Poster_2.png?raw=true" alt="Entertainment Poster 2">
+            <img class="carousel-item" src="https://github.com/Hacker-Sloth/StratusAirwaysIFE/blob/main/image.png?raw=true" alt="Entertainment Poster 3">
+        </div>
+        <div class="navigation">
+            <div class="nav-item">Movies</div>
+            <div class="nav-item">Music</div>
+            <div class="nav-item">Flight Info</div>
+            <div class="nav-item">Settings</div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const items = document.querySelectorAll(".carousel-item");
+        function showNextImage() {
+            items[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % items.length;
+            items[currentIndex].classList.add("active");
+        }
+        setInterval(showNextImage, 4000);
+    </script>
+</body>
+</html>
